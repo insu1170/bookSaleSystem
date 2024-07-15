@@ -20,7 +20,7 @@ connection.connect();
 
 app.post('/login/check', (req, res) => {
     const id = req.body.id;
-    console.log(id);
+    console.log(`${id}ㅇㄹㅇㄹ`);
 });
 
 app.set('port', process.env.PORT || 3001);
