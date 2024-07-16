@@ -10,6 +10,16 @@ export const SignUp = () => {
     const [nickName, setNickName] = useState("");
     const [passSecret, setPassSecret] = useState("");
 
+
+    // const [state, setState] = useState({
+    //     idValue: '',
+    //     passwordValue: '',
+    //     idChecked: false,
+    //     phoneNum: '',
+    //     nickName: '',
+    //     passSecret: ''
+    // });
+
     useEffect(() => {
         if (passwordValue) {
             inputSecret(passwordValue);
@@ -21,7 +31,7 @@ export const SignUp = () => {
     }, [idValue]);
 
     const idCheck = () => {
-        fetch("http://localhost:3001/login/check", {
+        fetch("http://localhost:3001/id/check", {
             method: 'POST', headers: {
                 'Content-Type': 'application/json'
             }, body: JSON.stringify({id: idValue})
@@ -43,7 +53,7 @@ export const SignUp = () => {
             });
     }
 
-    const inputSecret = (passWord) => {
+    const inputSecret = (passWord) => { // 나중에 좀 더 추가
         const length = passWord.length
         if (length >= 9) {
             setPassSecret("굿")
@@ -68,7 +78,12 @@ export const SignUp = () => {
                         'Content-Type': 'application/json'
                     }, body: JSON.stringify({id: idValue, password: passwordValue, nick: nickName, number: phoneNum})
                 }).then(res => res.json())
-                    .then(data => {
+                    .then(data => { //true flase 반환
+                        if(data){
+                            alert('정상적으로 가입 완료되었습니다.')
+                        }else{
+                            alert('예상치 못한 오류가 발생하였습니다.')
+                        }
                         console.log(data);
                     })
 
