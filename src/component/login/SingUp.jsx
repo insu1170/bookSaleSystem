@@ -72,7 +72,6 @@ export const SignUp = () => {
 
             if (phoneNum.length == 11) {
                 console.log('god')
-
                 fetch('http://localhost:3001/signup', {
                     method: 'POST', headers: {
                         'Content-Type': 'application/json'

@@ -55,3 +55,5 @@ N
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
+K
+src/component/main/Main.jsx,f\5\f5b74598702e76a540760a214c3fa53a16e13780
