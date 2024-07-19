@@ -6,7 +6,6 @@ const cors = require('cors');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
-const MySqlSession = require('express-mysql-session')(session);
 
 
 app.use(cors({
@@ -51,6 +50,7 @@ app.post('/id/check', (req, res) => {
 app.post('/signup', (req, res) => {
     const value = req.body;
     connection.query('INSERT INTO `user` (`userId`, `passWord`, `userName`, `phoneNum`) VALUES (?, ?, ?, ?)', [value.id, value.password, value.nick, value.number], (err, result) => {
+        console.log(value)
         if (err) {
             console.log('실패', err)
             res.json(false)

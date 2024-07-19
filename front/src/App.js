@@ -1,7 +1,7 @@
-import {Login} from "./component/login/Login";
-import {SignUp} from "./component/login/SingUp";
+import {Login} from "./page/login/Login";
+import {SignUp} from "./page/login/SingUp";
 import {Route, Routes} from "react-router-dom";
-import {Main} from "./component/main/Main";
+import {Main} from "./page/main/Main";
 
 function App() {
     return (<div className="App">
