@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
-
+import axiosPostCookie from "../../config/axiosPostCookie";
+import axiosPost from "../../config/axiosPost";
+import port from "../../config/port";
 export const SignUp = () => {
     const [state, setState] = useState({
         idValue: '', passwordValue: '', idChecked: false, phoneNum: '', nickName: '', passSecret: ''
@@ -37,11 +39,10 @@ export const SignUp = () => {
 
     const idCheck = async () => {
         try {
-            const response = await axios.post('http://localhost:3001/id/check', {
+            const response = await axios.post(`${port}/id/check`, {
                 id: state.idValue
             }, {
-                headers: {"Content-Type": 'application/json'},
-                withCredentials: true // 쿠키 전송 허용
+                axiosPostCookie
             });
             const data = response.data;
             if (data.length === 0) {
@@ -61,10 +62,10 @@ export const SignUp = () => {
         if (state.idChecked) {
             if (state.phoneNum.length === 11) {
                 try {
-                    const response = await axios.post('http://localhost:3001/signup', {
+                    const response = await axios.post(`${port}/signup`, {
                         id: state.idValue, password: state.passwordValue, nick: state.nickName, number: state.phoneNum
                     }, {
-                        headers: {"Content-Type": 'application/json'}
+                        axiosPost
                     });
                     const data = response.data;
                     if (data) {

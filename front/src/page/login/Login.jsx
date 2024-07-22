@@ -1,6 +1,9 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
+import axiosPostCookie from "../../config/axiosPostCookie";
+import port from "../../config/port";
+import sessionCheck from "../../config/sessionCheck";
 
 export const Login = () => {
     const navigate = useNavigate();
@@ -14,47 +17,13 @@ export const Login = () => {
             ...state, [name]: value
         })
     }
-    /*
-        async function loginCheck() {
-            try {
-                const response = await fetch('http://localhost:3001/login/check', {
-                    method: 'POST', headers: {'Content-Type': 'application/json'}, credentials: 'include', // 쿠키를 포함하도록 설정합니다.
-                    body: JSON.stringify({id: state.idValue, passWord: state.passWordValue})
-                });
-
-                const data = await response.json();
-                console.log(data);
-
-                if (data.success) {
-                    console.log('로그인 완료');
-                    navigate('/main');
-                } else {
-                    console.log('실패');
-                }
-            } catch (err) {
-                console.error(err);
-            }
-        }
-         */
-
-    /*
-       const sessionCheck = () => {
-           fetch('http://localhost:3001/session/check', {
-               method: "GET", credentials: 'include'
-           }).then(res => res.json())
-               .then(data => {
-                   console.log(data)
-               })
-       }
-   */
 
     async function loginCheck() {
         try {
-            const response = await axios.post('http://localhost:3001/login/check', {
+            const response = await axios.post(`${port}/login/check`, {
                 id: state.idValue, passWord: state.passWordValue
-            }, {
-                headers: {'Content-Type': 'application/json'}, withCredentials: true // 쿠키를 포함하도록 설정합니다.
-            });
+            },axiosPostCookie // 쿠키를 포함하도록 설정합니다.
+            );
 
             const data = response.data;
             console.log(data);
@@ -70,17 +39,6 @@ export const Login = () => {
         }
     }
 
-    async function sessionCheck() {
-        try {
-            const session = await ('http://localhost:3001/session/check', {
-                method: "GET", credentials: 'include'
-            })
-            const data = await session.json()
-            console.log(data);
-        } catch (err) {
-            console.log(err)
-        }
-    }
 
     return (<div>
         <div>
@@ -103,7 +61,7 @@ export const Login = () => {
         </div>
         <div>
             <input type="submit" value="로그인" onClick={loginCheck}/>
-            <button onClick={sessionCheck}>회원가입</button>
+            <button onClick={() => sessionCheck()}>회원가입</button>
         </div>
     </div>)
 }
