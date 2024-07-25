@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
-import axiosPostCookie from "../../config/axiosPostCookie";
 import axiosPost from "../../config/axiosPost";
 import port from "../../config/port";
+import axiosPostTrueFalse from "../../config/axiosPostTrueFalse";
+
 export const SignUp = () => {
     const [state, setState] = useState({
         idValue: '', passwordValue: '', idChecked: false, phoneNum: '', nickName: '', passSecret: ''
@@ -38,23 +39,20 @@ export const SignUp = () => {
     }
 
     const idCheck = async () => {
-        try {
-            const response = await axios.post(`${port}/id/check`, {
-                id: state.idValue
-            }, {
-                axiosPostCookie
-            });
-            const data = response.data;
-            if (data.length === 0) {
-                alert('사용 가능한 아이디입니다.');
-                setState({...state, idChecked: true});
-            } else {
-                alert('이미 사용 중인 아이디입니다.');
-                setState({...state, idChecked: false, passwordValue: ''});
-            }
-        } catch (err) {
-            console.log(err);
+        try{
+        const TF = await axiosPostTrueFalse(`${port}/overlap/check`, state.idValue, 'user', 'userId')
+        console.log(TF)
+        if (TF) {
+            alert('사용 가능한 아이디입니다.');
+            setState({...state, idChecked: true});
+        } else {
+            alert('이미 사용 중인 아이디입니다.');
+            setState({...state, idChecked: false, passwordValue: ''});
         }
+        }catch (err){
+            console.log(err)
+        }
+
     }
 
     const handleSubmit = async (e) => {
@@ -87,17 +85,9 @@ export const SignUp = () => {
 
     const navigate = useNavigate();
 
-    return (
-        <div>
+    return (<div>
             <form id="signupForm" onSubmit={handleSubmit}>
-                아이디:
-                <input
-                    type="text"
-                    name="idValue"
-                    id="idInput"
-                    placeholder="ID 입력창입니다"
-                    value={state.idValue}
-                    onChange={onChangeValue}
+                아이디:<input type="text" name="idValue" id="idInput" placeholder="ID 입력창입니다" value={state.idValue} onChange={onChangeValue}
                 />
                 <button type="button" onClick={idCheck}>중복확인</button>
                 <br/>
@@ -141,6 +131,5 @@ export const SignUp = () => {
             <button onClick={() => navigate('/login')}>
                 로그인 창으로
             </button>
-        </div>
-    );
+        </div>);
 }

@@ -12,7 +12,7 @@ export const Login = () => {
     })
     const onChangeValue = (e) => {
         const {value, name} = e.target;
-        console.log(state)
+        console.log(state,e.target)
         setState({
             ...state, [name]: value
         })
@@ -24,7 +24,6 @@ export const Login = () => {
                 id: state.idValue, passWord: state.passWordValue
             },axiosPostCookie // 쿠키를 포함하도록 설정합니다.
             );
-
             const data = response.data;
             console.log(data);
 

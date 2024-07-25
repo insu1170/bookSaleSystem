@@ -29,21 +29,25 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(session({
     secret: "secret", resave: false, saveUninitialized: false, cookie: {
-        maxAge:3600 * 1000 , httpOnly: false, secure: false,
+        maxAge: 3600 * 1000, httpOnly: false, secure: false,
     },
 }));
 
-app.post('/id/check', (req, res) => {
+app.post('/overlap/check', (req, res) => {
     const id = req.body.id;
+    const tableName = req.body.tableName
+    const query = req.body.query
     console.log(`${id} 확인`);
-    connection.query('select userId from user where userId = ?', [id], (err, result) => {
+    connection.query(`select * from ${tableName} where ${query} = ?`, [id], (err, result) => {
         console.log(result)
         if (result.length > 0) {
             console.log('거절');
+            res.json(false)
         } else {
             console.log('가능');
+            res.json(true)
         }
-        res.json(result)
+
     })
 });
 
@@ -61,6 +65,21 @@ app.post('/signup', (req, res) => {
 
     })
 })
+// 이거 어떻게 모듈화 하려면 할 수 있을 듯
+app.post('/add/book', (req, res) => {
+    const value = req.body;
+    connection.query('INSERT INTO `book` (`bookId`, `name`, `price`,`quantity`,`bookUrl`) VALUES (?, ?, ?, ?, ?)', [value.id, value.name, value.place, value.count, value.img], (err, result) => {
+        console.log(value)
+        if (err) {
+            console.log('실패', err)
+            res.json(false)
+        } else {
+            res.json(true)
+        }
+
+    })
+})
+
 
 app.post('/login/check', (req, res) => {
     const data = req.body;
@@ -73,7 +92,7 @@ app.post('/login/check', (req, res) => {
             req.session.user = {
                 id: data.id, passWord: data.passWord, name: "userName", authorized: true
             };
-            res.json({success: true, user:req.session.user})
+            res.json({success: true, user: req.session.user})
             console.log(req.session.user);
         } else {
             console.log('로그인 실패');
@@ -83,13 +102,27 @@ app.post('/login/check', (req, res) => {
 });
 
 app.get('/session/check', (req, res) => {
-    console.log('세션 확인:',req.session.user)
-    if(req.session.user){
-        res.json({success: true, user:req.session.user})
-    }else{
-        res.json({success:false, user:false})
+    console.log('세션 확인:', req.session.user)
+    if (req.session.user) {
+        res.json({success: true, user: req.session.user})
+    } else {
+        res.json({success: false, user: false})
     }
 })
+
+app.get('/bookList', (req, res) => {
+    connection.query(`SELECT * FROM book`, (err, result) => {
+        if (err) {
+            res.json(err)
+        }
+        res.json(result)
+
+
+    })
+
+})
+
+
 app.get('/main', (req, res) => {
     console.log(req.session.user);
 })

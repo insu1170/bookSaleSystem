@@ -9,10 +9,10 @@ async function sessionCheck() {
             withCredentials: true // 쿠키 전송 허용
         });
         const data = response.data;
-        if(data.success){
+        if (data.success) {
             console.log('있음')
             return true
-        }else{
+        } else {
             console.log('없음')
             return false;
         }
@@ -21,4 +21,5 @@ async function sessionCheck() {
         console.error('에러 발생', err);
     }
 }
-export  default sessionCheck
+
+export default sessionCheck

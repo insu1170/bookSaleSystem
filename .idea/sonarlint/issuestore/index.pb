@@ -52,3 +52,9 @@ R
 "front/src/page/addBook/AddBook.jsx,7\0\70e8437a40dc4604405f05e0433afd9f7d47a4e3
 P
  front/src/config/sessionCheck.js,5\8\58b1e612a0535304de76d3e87d9d9c00a3339af3
+V
+&front/src/config/axiosPostTrueFalse.js,4\b\4bc03ccfda957493642b4b76e3efc2ddfd72f7fa
+O
+front/src/config/numberCheck.js,2\4\2449848481b42ce748d7dd8e419511de6f5ec7ca
+N
+front/src/config/searchBook.js,2\0\20367aac92661c5cd4229d4ef493e28f06b4aca4
