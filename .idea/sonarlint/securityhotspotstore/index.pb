@@ -58,3 +58,11 @@ O
 front/src/config/numberCheck.js,2\4\2449848481b42ce748d7dd8e419511de6f5ec7ca
 N
 front/src/config/searchBook.js,2\0\20367aac92661c5cd4229d4ef493e28f06b4aca4
+R
+"front/src/page/addPage/AddCard.jsx,f\2\f24a9fed387ce59bf1dcc004ea23262d45848a91
+K
+front/src/config/addData.js,0\7\0781276a645251c9c372e42f1cbc03cb3296bb70
+R
+"front/src/page/addPage/AddBook.jsx,d\3\d3831b7cb51e20bcf16b6c9f64b6d795c9667a50
+U
+%front/src/page/addPage/AddAddress.jsx,e\b\ebef9325453dc6072c8dc1259bd761f90a1ae96d

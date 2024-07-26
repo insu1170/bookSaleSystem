@@ -126,6 +126,26 @@ app.get('/bookList', (req, res) => {
 app.get('/main', (req, res) => {
     console.log(req.session.user);
 })
+app.post('/check', (req, res) => {
+
+    const uId = req.session.user.id
+    console.log(req.body)
+    const data = req.body
+    const val = data.query.values
+    val.pop()
+
+    val.push(uId)
+    console.log(val, data.query.sql)
+    connection.query(`${data.query.sql}`, val, (err, value) => {
+        if (err) {
+            console.log(err, '에러')
+        } else {
+            console.log(value, '성공')
+            res.json(value)
+        }
+    })
+
+})
 
 
 app.set('port', process.env.PORT || 3001);
