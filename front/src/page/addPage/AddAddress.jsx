@@ -2,6 +2,7 @@ import {useState} from "react";
 import axios from "axios";
 import port from "../../config/port";
 import axiosPost from "../../config/axiosPost";
+import insertData from "../../config/insertData";
 
 export const AddAddress = () => {
     const [state, setState] = useState({
@@ -32,11 +33,18 @@ export const AddAddress = () => {
             ...state, detailAdd: data
         })
     }
+    const onClickHandle = () => {
+        const key = ['postNum', 'normalAdd', 'detailAdd', "userId"]
+        const value = [Number(state.postNum), state.normalAdd, state.detailAdd, '']
+        insertData('address', '/check', key, value)
+    }
+
     return (<div>
         우편번호:<input type="text" value={state.postNum} disabled='false'/>
         <button onClick={search}>검색</button>
         기본주소<input type="text" value={state.normalAdd} disabled='false'/>
         상세주소<input type="text" value={state.detailAdd} onChange={changeHandle} disabled={!state.inputState}/>
+        <button onClick={onClickHandle}>등록하기</button>
 
     </div>)
 }

@@ -127,7 +127,6 @@ app.get('/main', (req, res) => {
     console.log(req.session.user);
 })
 app.post('/check', (req, res) => {
-
     const uId = req.session.user.id
     console.log(req.body)
     const data = req.body

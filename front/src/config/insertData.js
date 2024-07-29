@@ -2,6 +2,8 @@ import axios from 'axios';
 import port from './port';
 import axiosPostCookie from "./axiosPostCookie";
 
+
+/** 테이블 이름, 서버 url, key값, value값 넣으면 맞춰서 insert 문 실행*/
 async function insertData(tableName, url, ...query) {
 
     const columns = query[0]; //key 값
