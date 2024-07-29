@@ -2,13 +2,11 @@ import axios from 'axios';
 import port from './port';
 import axiosPostCookie from "./axiosPostCookie";
 
-async function addData(tableName,url,...query) {
+async function insertData(tableName, url, ...query) {
 
     const columns = query[0]; //key 값
     const values = query[1];  // value 값
     console.log(columns, values,url)
-
-
     const columnString = columns.join(', '); // key 값 배열을 문자열로 + 배열 값마다 , 를 넣는 과정
     const queryMark = values.map(() => '?').join(', '); // 값 개수만큼 ? 문자열 생성및 위와 같이 ,를 넣는 과정
 
@@ -26,4 +24,4 @@ async function addData(tableName,url,...query) {
     }
 }
 
-export default addData;
+export default insertData;

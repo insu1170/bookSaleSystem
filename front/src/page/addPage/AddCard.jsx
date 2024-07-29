@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import addData from "../../config/addData";
+import insertData from "../../config/insertData";
 
 export const AddCard = () => {
     const [cardInfo, setCardInfo] = useState({
@@ -30,7 +30,7 @@ export const AddCard = () => {
         // console.log(queryNames, queryValues)
 
         try {
-            await addData('card', '/check', queryNames, queryValues);
+            await insertData('card', '/check', queryNames, queryValues);
             alert('등록되었습니다!');
         } catch (err) {
             alert('오류가 발생했습니다.');

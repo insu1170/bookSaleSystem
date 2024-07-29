@@ -146,7 +146,21 @@ app.post('/check', (req, res) => {
     })
 
 })
+let clintRes='';
+app.post('/address',(req,res)=>{
 
+    if(req.body.zipNo===undefined){
+        clintRes = res
+    }else{
+        const address = req.body
+        console.log(address, address.zipNo)
+        clintRes.json({
+            data: [address.zipNo, address.roadFullAddr, address.addrDetail]
+        });
+    }
+
+
+})
 
 app.set('port', process.env.PORT || 3001);
 const server = http.createServer(app).listen(app.get('port'), () => {

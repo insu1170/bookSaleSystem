@@ -48,8 +48,6 @@ S
 #front/src/config/axiosPostCookie.js,b\2\b20396b12aa172e5b680ecca1160ca3f21fe3844
 H
 front/src/config/port.js,7\5\7560143b60e24ae4ae56cf326bf16ec717d9cf12
-R
-"front/src/page/addBook/AddBook.jsx,7\0\70e8437a40dc4604405f05e0433afd9f7d47a4e3
 P
  front/src/config/sessionCheck.js,5\8\58b1e612a0535304de76d3e87d9d9c00a3339af3
 V
@@ -60,9 +58,11 @@ N
 front/src/config/searchBook.js,2\0\20367aac92661c5cd4229d4ef493e28f06b4aca4
 R
 "front/src/page/addPage/AddCard.jsx,f\2\f24a9fed387ce59bf1dcc004ea23262d45848a91
-K
-front/src/config/addData.js,0\7\0781276a645251c9c372e42f1cbc03cb3296bb70
 R
 "front/src/page/addPage/AddBook.jsx,d\3\d3831b7cb51e20bcf16b6c9f64b6d795c9667a50
 U
 %front/src/page/addPage/AddAddress.jsx,e\b\ebef9325453dc6072c8dc1259bd761f90a1ae96d
+N
+front/src/config/insertData.js,9\4\94d23e7f4da0a97ee3bff1ac6f668f61f46a7f71
+R
+"front/src/page/addPage/Address.jsx,f\7\f786f7a0ff9de1f7f022ee540d12be096fd41b04
