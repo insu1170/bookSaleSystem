@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
-import axiosPostCookie from "../../config/axiosPostCookie";
+import axiosPostCookie from "../../config/axios/axiosPostCookie";
 import port from "../../config/port";
 import sessionCheck from "../../config/sessionCheck";
 

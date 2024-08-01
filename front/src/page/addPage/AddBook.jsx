@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
-import axiosPostTrueFalse from "../../config/axiosPostTrueFalse";
+import axiosPostTrueFalse from "../../config/axios/axiosPostTrueFalse";
 import port from "../../config/port";
 import numberCheck from "../../config/numberCheck";
 import axios from "axios";
-import axiosPost from "../../config/axiosPost";
+import axiosPost from "../../config/axios/axiosPost";
 
 export const AddBook = () => {
     const [state, setState] = useState({

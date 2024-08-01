@@ -132,33 +132,60 @@ app.post('/check', (req, res) => {
     const data = req.body
     const val = data.query.values
     val.pop()
-
     val.push(uId)
     console.log(val, data.query.sql)
     connection.query(`${data.query.sql}`, val, (err, value) => {
         if (err) {
             console.log(err, '에러')
+            res.json({success: false})
         } else {
             console.log(value, '성공')
-            res.json(value)
+            res.json({success: true})
         }
     })
-
 })
-let clintRes='';
-app.post('/address',(req,res)=>{
+let clintRes = '';
+app.post('/address', (req, res) => {
 
-    if(req.body.zipNo===undefined){
+    if (req.body.zipNo === undefined) {
         clintRes = res
-    }else{
+    } else {
         const address = req.body
         console.log(address, address.zipNo)
         clintRes.json({
             data: [address.zipNo, address.roadFullAddr, address.addrDetail]
         });
     }
+})
 
+app.post('/update', (req, res) => {
+    console.log('왔음 업데이트')
+    const data = req.body.sql
+    console.log(data)
+    connection.query(`${data}`, (err, value) => {
+        console.log(value)
+        if (err) {
+            console.log('실패')
+        } else {
+            console.log('성공')
+        }
+    })
+})
 
+app.post('/select', (req, res) => {
+    // const uId = req.session.user.id
+    console.log(req.body, 'so good!')
+    const data = req.body
+
+    console.log(data.sql,);
+    connection.query(data.sql, ['qwer123'], (err, result) => {
+        console.log(result, '결과임')
+        if(err){
+            res.json(false)
+        }else{
+            res.json(result);
+        }
+    })
 })
 
 app.set('port', process.env.PORT || 3001);

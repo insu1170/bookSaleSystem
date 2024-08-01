@@ -5,6 +5,7 @@ import {Main} from "./page/main/Main";
 import {AddBook} from "./page/addPage/AddBook";
 import {AddCard} from "./page/addPage/AddCard";
 import {AddAddress} from "./page/addPage/AddAddress";
+import {OrderPage} from "./page/buyPage/OrderPage";
 
 function App() {
     return (<div className="App">
@@ -15,6 +16,7 @@ function App() {
             <Route path="/addBook" element={<AddBook/>}/>
             <Route path="/addCard" element={<AddCard/>}/>
             <Route path="/addAddress" element={<AddAddress/>}/>
+            <Route path="/orderPage" element={<OrderPage/>}/>
         </Routes>
     </div>);
 }

@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
-import axiosPost from "../../config/axiosPost";
+import axiosPost from "../../config/axios/axiosPost";
 import port from "../../config/port";
-import axiosPostTrueFalse from "../../config/axiosPostTrueFalse";
+import axiosPostTrueFalse from "../../config/axios/axiosPostTrueFalse";
 
 export const SignUp = () => {
     const [state, setState] = useState({

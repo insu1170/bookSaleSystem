@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import insertData from "../../config/insertData";
+import insertData from "../../config/sql/insertData";
 
 export const AddCard = () => {
     const [cardInfo, setCardInfo] = useState({

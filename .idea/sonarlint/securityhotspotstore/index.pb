@@ -42,16 +42,10 @@ B
 front/src/index.js,9\a\9a006754369fd7aece590bd3ea0e2f12aab5b795
 L
 front/src/reportWebVitals.js,8\4\84292613f8292295a0cd1a5e7ffd07bc5f8754c3
-M
-front/src/config/axiosPost.js,0\f\0f477fa29d044f02e96017fdc34b6589cdc7e0be
-S
-#front/src/config/axiosPostCookie.js,b\2\b20396b12aa172e5b680ecca1160ca3f21fe3844
 H
 front/src/config/port.js,7\5\7560143b60e24ae4ae56cf326bf16ec717d9cf12
 P
  front/src/config/sessionCheck.js,5\8\58b1e612a0535304de76d3e87d9d9c00a3339af3
-V
-&front/src/config/axiosPostTrueFalse.js,4\b\4bc03ccfda957493642b4b76e3efc2ddfd72f7fa
 O
 front/src/config/numberCheck.js,2\4\2449848481b42ce748d7dd8e419511de6f5ec7ca
 N
@@ -63,6 +57,26 @@ R
 U
 %front/src/page/addPage/AddAddress.jsx,e\b\ebef9325453dc6072c8dc1259bd761f90a1ae96d
 N
-front/src/config/insertData.js,9\4\94d23e7f4da0a97ee3bff1ac6f668f61f46a7f71
+front/src/component/NavBar.jsx,9\6\96fdfbb132bf318c67748f4192c5b1010b2a2ee4
+N
+front/src/config/cartBasket.js,c\5\c5ef6c8dbb24d1f79c6464809e036d3bddcd41e7
 R
-"front/src/page/addPage/Address.jsx,f\7\f786f7a0ff9de1f7f022ee540d12be096fd41b04
+"front/src/config/sql/insertData.js,b\4\b427a160e5011ae0b072608eb4e04f2da1d80c47
+R
+"front/src/config/sql/deleteData.js,a\6\a6a6671fef278ef7dcf0b64933711e76c731fe1e
+R
+"front/src/config/sql/selectData.js,5\4\54788cc730c9097b5036bff3e27ed990a3a8d4b9
+R
+"front/src/config/sql/updateDate.js,7\c\7cb54517cfec5190bdf7a523455e2692086b2ea0
+\
+,front/src/config/axios/axiosPostTrueFalse.js,9\b\9bf4c8862c040a8be5d23954c794db5eed00e5d7
+O
+front/src/config/directOrder.js,3\4\3473427385a2ab480818212556c912a9ad079e9f
+O
+front/src/config/currentTime.js,d\b\db9c29d67c6f594f8245e36d973cfaa63a38a034
+T
+$front/src/page/buyPage/OrderPage.jsx,2\7\2739ed3e6e23bd9e1d89bbe54193c542fc9bdadc
+Y
+)front/src/config/axios/axiosPostCookie.js,2\4\24707ad954c79a67a6650e0cee06398e9c31b534
+S
+#front/src/config/axios/axiosPost.js,f\3\f3b608176f2f96c84ba5be4b92151062595e68be

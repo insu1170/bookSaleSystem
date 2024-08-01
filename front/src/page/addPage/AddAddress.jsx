@@ -1,8 +1,8 @@
 import {useState} from "react";
 import axios from "axios";
 import port from "../../config/port";
-import axiosPost from "../../config/axiosPost";
-import insertData from "../../config/insertData";
+import axiosPost from "../../config/axios/axiosPost";
+import insertData from "../../config/sql/insertData";
 
 export const AddAddress = () => {
     const [state, setState] = useState({
@@ -45,6 +45,5 @@ export const AddAddress = () => {
         기본주소<input type="text" value={state.normalAdd} disabled='false'/>
         상세주소<input type="text" value={state.detailAdd} onChange={changeHandle} disabled={!state.inputState}/>
         <button onClick={onClickHandle}>등록하기</button>
-
     </div>)
 }
