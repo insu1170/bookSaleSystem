@@ -12,7 +12,7 @@ async function insertData(tableName, url, ...query) {
     const columnString = columns.join(', '); // key 값 배열을 문자열로 + 배열 값마다 , 를 넣는 과정
     const queryMark = values.map(() => '?').join(', '); // 값 개수만큼 ? 문자열 생성및 위와 같이 ,를 넣는 과정
 
-    const sqlQuery = `INSERT INTO ${tableName} (${columnString}) VALUES (${queryMark})`; //쿼리문
+    const sqlQuery = `INSERT INTO \`${tableName}\` (${columnString}) VALUES (${queryMark})`; //쿼리문
     try {
         const response = await axios.post(`${port}${url}`, {
             table: tableName, query: {sql: sqlQuery, values}
@@ -20,8 +20,8 @@ async function insertData(tableName, url, ...query) {
         // 응답 처리
         const data = response.data;
         if (data.success) {
-            console.log('삽입완료')
-            return true
+            console.log('삽입완료',data)
+            return data
         } else {
             console.log('삽입 실패')
             return false;

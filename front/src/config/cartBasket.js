@@ -7,7 +7,7 @@ const cartBasket = async (item, count, price) => {
     const today = currentTime()
     console.log(today)
     const success = await insertData('cart', '/check', ['orderCount', 'time', 'bookId', 'userId'], [count, today, item.bookId, ''])
-    if (success) {// 여기서 수량 빼는 함수 작성 해야함 - updateData에서 유동적으로 뺄 수 있게
+    if (success.success) {// 여기서 수량 빼는 함수 작성 해야함 - updateData에서 유동적으로 뺄 수 있게
         const updates = updateDate('book', item.bookId, count, '-');
         console.log(updates, '업데이트')
     } else {

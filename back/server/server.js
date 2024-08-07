@@ -126,6 +126,12 @@ app.get('/bookList', (req, res) => {
 app.get('/main', (req, res) => {
     console.log(req.session.user);
 })
+
+app.post('/uidNot',(req,res)=>{
+    const data = req.body
+    const val = data.query.values
+    insert(data.query.sql, val, res)
+})
 app.post('/check', (req, res) => {
     const uId = req.session.user.id
     console.log(req.body)
@@ -134,16 +140,24 @@ app.post('/check', (req, res) => {
     val.pop()
     val.push(uId)
     console.log(val, data.query.sql)
-    connection.query(`${data.query.sql}`, val, (err, value) => {
+    insert(data.query.sql, val, res)
+})
+
+
+function insert(sql, value, res) {
+    connection.query(`${sql}`, value, (err, value) => {
         if (err) {
-            console.log(err, '에러')
+            console.log(err, '에러임')
             res.json({success: false})
         } else {
             console.log(value, '성공')
-            res.json({success: true})
+            res.json({success: true, value: value.insertId})
         }
     })
-})
+
+}
+
+
 let clintRes = '';
 app.post('/address', (req, res) => {
 
@@ -180,9 +194,9 @@ app.post('/select', (req, res) => {
     console.log(data.sql,);
     connection.query(data.sql, ['qwer123'], (err, result) => {
         console.log(result, '결과임')
-        if(err){
+        if (err) {
             res.json(false)
-        }else{
+        } else {
             res.json(result);
         }
     })

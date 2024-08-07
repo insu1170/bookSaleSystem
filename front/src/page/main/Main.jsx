@@ -87,7 +87,7 @@ export const Main = () => {
                 <td>
                     <button onClick={() => cartIn(item)}>장바구니 담기</button>
                     <button onClick={() => {
-                        navigate('/orderPage');
+                        navigate('/orderPage',{state:{count:count.quantity,total:count.price,bookId:item.bookId}});
                         directBuy();
                     }}>바로 구매
                     </button>
