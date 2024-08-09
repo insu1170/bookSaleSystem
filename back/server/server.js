@@ -122,16 +122,10 @@ app.get('/bookList', (req, res) => {
 
 })
 
-
 app.get('/main', (req, res) => {
     console.log(req.session.user);
 })
 
-app.post('/uidNot',(req,res)=>{
-    const data = req.body
-    const val = data.query.values
-    insert(data.query.sql, val, res)
-})
 app.post('/check', (req, res) => {
     const uId = req.session.user.id
     console.log(req.body)
@@ -142,7 +136,11 @@ app.post('/check', (req, res) => {
     console.log(val, data.query.sql)
     insert(data.query.sql, val, res)
 })
-
+app.post('/insertUidX',(req,res)=>{
+    const data = req.body
+    const val = data.query.values
+    insert(data.query.sql, val, res)
+})
 
 function insert(sql, value, res) {
     connection.query(`${sql}`, value, (err, value) => {
@@ -187,12 +185,11 @@ app.post('/update', (req, res) => {
 })
 
 app.post('/select', (req, res) => {
-    // const uId = req.session.user.id
+    const uId = req.session.user.id
     console.log(req.body, 'so good!')
     const data = req.body
-
     console.log(data.sql,);
-    connection.query(data.sql, ['qwer123'], (err, result) => {
+    connection.query(data.sql, [uId], (err, result) => {
         console.log(result, '결과임')
         if (err) {
             res.json(false)
@@ -201,6 +198,21 @@ app.post('/select', (req, res) => {
         }
     })
 })
+
+app.post('/selectUidX', (req, res) => {
+
+    const data = req.body
+    console.log(data.sql,);
+    connection.query(data.sql, [data.datas], (err, result) => {
+        console.log(result, '결과임')
+        if (err) {
+            res.json(false)
+        } else {
+            res.json(result);
+        }
+    })
+})
+
 
 app.set('port', process.env.PORT || 3001);
 const server = http.createServer(app).listen(app.get('port'), () => {

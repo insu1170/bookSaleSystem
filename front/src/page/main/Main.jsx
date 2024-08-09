@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import sessionCheck from "../../config/sessionCheck";
 import searchBook from "../../config/searchBook";
 import cartBasket from "../../config/cartBasket";
-import directOrder from "../../config/directOrder";
+
 
 export const Main = () => {
     const [bookList, setBookList] = useState([]);
@@ -51,17 +51,18 @@ export const Main = () => {
 
     }
 
-    const directBuy = () => {
-        directOrder()
-
-    } // 바로 구매 구현 예정
 
     const cartIn = (item) => {
         cartBasket(item, count.quantity, count.price)
         setCount({...count, quantity: 0, price: 0})
     }
+
+    const cartCheck=()=>{
+        navigate('/cartPage')
+    }
+
     return (<div>
-        <h1>여기는 메인화면</h1>
+        <h1>여기는 메인화면</h1> <button onClick={cartCheck}>장바구니 확인</button>
         {bookList.map((item) => (<table key={item.id}>
             <tbody onClick={() => bookBuy(item)}>
             <tr>
@@ -87,8 +88,7 @@ export const Main = () => {
                 <td>
                     <button onClick={() => cartIn(item)}>장바구니 담기</button>
                     <button onClick={() => {
-                        navigate('/orderPage',{state:{count:count.quantity,total:count.price,bookId:item.bookId}});
-                        directBuy();
+                        navigate('/direct/orderPage',{state:{count:count.quantity,total:count.price,bookId:item.bookId}});
                     }}>바로 구매
                     </button>
                 </td>

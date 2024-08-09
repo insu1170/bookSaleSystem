@@ -80,3 +80,7 @@ Y
 )front/src/config/axios/axiosPostCookie.js,2\4\24707ad954c79a67a6650e0cee06398e9c31b534
 S
 #front/src/config/axios/axiosPost.js,f\3\f3b608176f2f96c84ba5be4b92151062595e68be
+S
+#front/src/page/buyPage/CartPage.jsx,d\1\d1c9b8e278bdeef1fd2a789cb45bb44de0f3fe09
+Z
+*front/src/page/buyPage/DirectOrderPage.jsx,7\9\795dcf372f2bbf15f7b4acdf03b0b39ab8448756
